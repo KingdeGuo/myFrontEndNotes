@@ -89,4 +89,135 @@
 
 - 数组语法
 
+  给`:class`绑定一个数组
+
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <title>Title</title>
+  </head>
+  <body>
+  <div id="app">
+      <div :class="[activeCls, errorCls]"></div>
+  </div>
+  <script src="https://unpkg.com/vue@2.1.6/dist/vue.min.js"></script>
+  <script>
+      var app = new Vue({
+          el: "app",
+          data:{
+              activeCls:'active',
+              errorCls:'error'
+          }
+      })
+  </script>
+  
+  </body>
+  </html>
+  ```
+
+  也可以使用三元表达式来根据条件切换class
+
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <title>Title</title>
+  </head>
+  <body>
+  <div id="app">
+      <div :class="[isAvtive? activeCls:'', errorCls]"></div>
+  </div>
+  <script src="https://unpkg.com/vue@2.1.6/dist/vue.min.js"></script>
+  <script>
+      var app = new Vue({
+          el: "app",
+          data:{
+              activeCls:'active',
+              errorCls:'error'
+          }
+      })
+  </script>
+  
+  </body>
+  </html>
+  ```
+
+  可以使用对象语法简化
+
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <title>Title</title>
+  </head>
+  <body>
+  <div id="app">
+      <div :class="[{'active':isActive}, errorCls]"></div>
+  </div>
+  <script src="https://unpkg.com/vue@2.1.6/dist/vue.min.js"></script>
+  <script>
+      var app = new Vue({
+          el: "app",
+          data:{
+              activeCls:'active',
+              errorCls:'error'
+          }
+      })
+  </script>
+  
+  </body>
+  </html>
+  ```
+
+  同样可以使用计算属性
+
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <title>Title</title>
+  </head>
+  <body>
+  <div id="app">
+      <div :class="classes"></div>
+  </div>
+  <script src="https://unpkg.com/vue@2.1.6/dist/vue.min.js"></script>
+  <script>
+      var app = new Vue({
+          el: "app",
+          data:{
+              size:'large',
+              disabled:true
+          },
+          computed:{
+              classes:function(){
+                  return{
+                      'btn',
+                      {
+                    		['btn-' + this.size]:this.size !== '',
+                          ['btn-disabled']:this.disabled
+                  	}
+                  };
+              }
+          }
+      })
+  </script>
+  
+  </body>
+  </html>
+  ```
+
+  渲染结果为
+
+  ```html
+  <button class="btn btn-large bth-disabled"></button>
+  ```
+
+- 在组件上使用
+
   
