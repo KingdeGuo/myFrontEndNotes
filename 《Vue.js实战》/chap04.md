@@ -220,4 +220,39 @@
 
 - 在组件上使用
 
-  
+  如果直接在自定义组件上使用`class`或`:class`，样式规则会直接应用到这个组件的根元素上。
+
+  ```html
+  Vue.componet('my-component',{
+  	template:'<p class='article'>一些文本</p>'
+  })
+  ```
+
+  然后在调用这个组件时，使用对象语法或者数据语法绑定class。例如
+
+  ```html
+  <div id='app'>
+      <my-component :class="{'active':isActive}"></my-component>
+  </div>
+  <script>
+  	var app = new Vue({
+          el:"#app",
+          data:{
+              isActive:true
+          }
+      })
+  </script>
+  ```
+
+  渲染结果为
+
+  ```html
+  <p classs='article active'>
+      一些文本
+  </p>
+  ```
+
+  注意，这种用法仅适用于自定义组件的最外层是一个根元素，否则会失效，当不满足这种条件或需要给具体的子元素设置类名时，应该使用组件的props来传递，这些用法同样适用于绑定内联样式style的内容。
+
+## 绑定内联样式
+
