@@ -238,7 +238,84 @@
 ## 指令与事件
 
 - 数据驱动DOM是Vue.js核心理念，所有不到万不得已不要主动操作DOM，你只需要维护号数据，DOM的事Vue会帮你优雅的处理
+
 - 一些指令介绍
   - `v-bind`：动态更新HTML元素上的属性
-  - `v-on`：用来绑定事件监听器
+  - `v-on`：用来绑定事件监听器，方便用于交互
+  
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <title>Title</title>
+  </head>
+  <body>
+  <div id="app">
+      <p v-if="show">look here</p>
+      <button v-on:click="handleClose">Hide top</button>
+  </div>
+  
+  <script src="https://unpkg.com/vue@2.1.6/dist/vue.min.js"></script>
+  <script>
+      var app = new Vue({
+          el: '#app',
+          data:{
+              show: true
+          },
+          methods:{
+              handleClose: function () {
+                  this.show = false;
+              }
+          }
+      })
+  </script>
+  </body>
+  </html>
+  ```
+  
+- `v-on:click`, `v-on:dbclick`, `v-on:keyup`, `v-on:mouseover`
+
+- 也可以写成
+
+  ```js
+  <script>
+      var app = new Vue({
+          el: '#app',
+          data:{
+              show: true
+          },
+          methods:{
+              handleClose: function () {
+                  this.show = close();
+              },
+              close:function(){
+                  this.show = false;
+              }
+          }
+      });
+  </script>
+  ```
+
+
+
+## 语法糖
+
+- `v-bind`的语法糖是直接省略`v-bind`，直接写`:`
+
+- `v-on`的语法糖是用`@`来替代。
+
+- 代码示例
+
+  ```html
+  <a v-bind:hred="url">Link</a>
+  <!-- 缩写为 -->
+  <a :href="url">Link</a>
+  
+  <button v-on:click=:"myFun1"> Button </button>
+  <!-- 缩写为 -->
+  <button @click="myFun1"> Button </button>
+  ```
+
+  
 
