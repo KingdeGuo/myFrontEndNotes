@@ -256,3 +256,60 @@
 
 ## 绑定内联样式
 
+- 即使用`v-bind:style`, 也就是`:style`
+
+- 方法与`:class`类似，也有对象语法和数组语法。看起来像是直接在元素上写CSS
+
+  ```html
+  <div id='app'>
+      <div :stype="{'color':color, 'fontSize':fontSize+'px'}">
+          文本
+      </div>
+  </div>
+  <script>
+  	var app = new Vue({
+          el:'#app',
+          date:{
+              color:'red',
+              fontSize:14
+          }
+      })
+  </script>
+  ```
+
+  CSS属性名称使用驼峰命名或者短横线名命。
+
+  渲染之后的结果是
+
+  ```html
+  <div style="color:red; font-size:14px">文本</div>
+  ```
+
+  同样可以写在`data`或`computed`里
+
+  ```html
+  <div id='app'>
+      <div :stype="styles">
+          文本
+      </div>
+  </div>
+  <script>
+  	var app = new Vue({
+          el:'#app',
+          date:{
+              color:'red',
+              fontSize:14 + 'px'
+          }
+      })
+  </script>
+  ```
+
+  数组语法为
+
+  ```html
+  <div :style="{styleA, styleB}">
+      文本
+  </div>
+  ```
+
+  
