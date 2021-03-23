@@ -169,5 +169,73 @@
 
 ## 过滤器的使用
 
+- 在`{{}}`中使用管道`|`可以对数据进行过滤
+
+- 一个实例
+
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <title>Title</title>
+  </head>
+  <body>
+  
+  <div id="app">
+      {{date | formatDate}}
+  </div>
+  <script src="https://unpkg.com/vue@2.1.6/dist/vue.min.js"></script>
+  <script>
+      var padDate = function (value) {
+          return value < 10 ? '0' + value : value;
+      }
+      var app = new Vue({
+          el:'#app',
+          data:{
+              date: new Date()
+          },
+          filters:{
+              formatDate: function (value) {
+                  var date = new Date(value);
+                  var year = date.getFullYear();
+                  var month = padDate(date.getMonth());
+                  var day = padDate(date.getDate());
+                  var hours = padDate(date.getHours());
+                  var minutes = padDate(date.getMinutes());
+                  var seconds = padDate(date.getSeconds());
+                  return year + "-" + month + "-" + day + " " + hours + ":" + minutes + ":" + seconds;
+              }
+          },
+          mounted: function () {
+              var _this = this;
+              this.timer = setInterval(function () {
+                  _this.date = new Date();
+              },1000);
+          },
+          beforeDestory:function () {
+              if (this.timer){
+                  clearTimeout(this.timer);
+              }
+          }
+      })
+  </script>
+  </body>
+  </html>
+  ```
+
+- 过滤器可以串联，也可以接收参数
+
+  ```html
+  {{message | filter1 | filter2}}
+  {{message | filter3('arg1', 'arg2')}}
+  ```
+
+- 上述代码中传入的分别是第二和第三个参数，第一个参数是数据本身。
+
+
+
+## 指令与事件
+
 
 
