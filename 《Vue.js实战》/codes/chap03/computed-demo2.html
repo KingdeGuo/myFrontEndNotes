@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    {{fullName}}
+</div>
+<script src="https://unpkg.com/vue@2.1.6/dist/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el: "app",
+        data:{
+            firstName: 'Jack',
+            lastName: 'Green'
+        },
+        computed:{
+            fullName:{
+                get:function () {
+                    return this.firstName + " " + this.lastName;
+                },
+                set: function (newValue) {
+                    var names = newValue.splice(' ');
+                    this.firstName = names[0];
+                    this.lastName = names[names.length - 1];
+                }
+            }
+        }
+    })
+</script>
+</body>
+</html>

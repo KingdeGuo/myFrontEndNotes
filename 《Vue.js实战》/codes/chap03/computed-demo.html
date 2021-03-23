@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    {{sum}}
+</div>
+
+<script src="https://unpkg.com/vue@2.1.6/dist/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            num1:{
+                val:1
+            },
+            num2:{
+                val:2
+            }
+        },
+        computed:{
+            sum:function () {
+                var temp = 0;
+                return this.num1.val + this.num2.val;
+            }
+        }
+    })
+</script>
+
+</body>
+</html>
