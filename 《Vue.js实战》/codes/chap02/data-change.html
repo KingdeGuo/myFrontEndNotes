@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="app">
+    {{date}}
+</div>
+
+<script src="https://unpkg.com/vue@2.1.6/dist/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el:'#app',
+        data:{
+            date: new Date()
+        },
+        mounted: function () {
+            var _this = this;
+            this.timer = setInterval(function () {
+                _this.data = new Date();
+            }, 1000);
+        },
+        beforeDestory:function () {
+            if(this.timer){
+                clearTimeout(this.timer);
+            }
+        }
+    })
+</script>
+
+</body>
+</html>

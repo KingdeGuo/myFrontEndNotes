@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue示例1</title>
+    <style>
+        .myli{
+            background: blanchedalmond;
+            font-family: 楷体;
+            font-size: larger;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" class="myli">
+        <ul>
+            <li v-for="book in books">{{book.name}}</li>
+        </ul>
+    </div>
+
+    <script src="https://unpkg.com/vue@2.1.6/dist/vue.min.js"></script>
+    <script>
+        new Vue({
+            el: '#app',
+            data:{
+                books:[
+                    {name:'《Vue.js》'},
+                    {name:'《Java核心技术》'},
+                    {name:'《Java编程思想》'},
+                ]
+            }
+        });
+    </script>
+</body>
+</html>
