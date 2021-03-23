@@ -104,3 +104,38 @@
 
 ## 插值与表达式
 
+- 使用`{{}}插值`
+
+- 如果有时候就是想输出HTML，而不是将数据解析后的纯文本，可以使用`v-html`
+
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <title>Title</title>
+  </head>
+  <body>
+  
+  <div id="app">
+      <span v-html="link"></span>
+  </div>
+  
+  <script src="https://unpkg.com/vue@2.1.6/dist/vue.min.js"></script>
+  <script>
+      var app = new Vue({
+          el: '#app',
+          data:{
+              link:"<a href='#'>这是一个超链接</a>"
+          }
+      })
+  </script>
+  
+  </body>
+  </html>
+  ```
+
+- 但是要注意，如果将用户产生的内容使用`v-html`输出后，可能产生XSS攻击，所以要在服务器端对用户提交的内容进行处理。一般将尖括号`< >`转义
+
+- 
+
