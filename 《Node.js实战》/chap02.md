@@ -70,4 +70,37 @@
   console.log(app.a);
   ```
 
-- 
+## Vue的生命周期钩子
+
+- `created`
+
+  - 实例创建完成之后调用
+  - 完成了数据观测，但是尚未挂载，`$el`不可用
+
+- `mounted`
+
+  - `el`挂载到实例上后调用
+
+- `beforeDestory`
+
+  - 实例销毁之前调用，主要解绑一些使用`addEventListener`监听的事件。
+
+- 像`el`, `data`一样可以作为选项写入Vue实例内
+
+  ```js
+  var app = new Vue({
+      el:'app',
+      date:{
+          a:2
+      },
+      created:function(){
+          console.log(2);
+      },
+      mounted:function(){
+          console.log(this.$el);
+      }
+  })
+  ```
+
+## 插值与表达式
+
