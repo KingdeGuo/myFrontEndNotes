@@ -420,5 +420,20 @@
   </script>
   ```
 
-- 
+
+
+## 数组更新
+
+- 会改变原数组的方法
+  - push()
+  - pop()
+  - shift()
+  - unshift()
+  - splice()
+  - sort()
+  - reverse()
+- 不会改变原数组的方法
+  - filter()
+  - concat()
+  - slice()
 
