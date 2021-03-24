@@ -207,4 +207,47 @@
 
   可以看到DOM虽然改变了，但是输入框中的内容并没有发生改变。这说明`<input>`标签中的内容被复用了。
 
+- 如果不希望这样做，可以使用Vue.js提供的key属性，来决定元素是否复用。
+
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <title>Title</title>
+  </head>
+  <body>
   
+  <div id="app">
+      <template v-if="type==='name'">
+          <label>用户名：</label>
+          <input placeholder="输入姓名" key='my-name'>
+      </template>
+      <template v-else>
+          <label>邮箱：</label>
+          <input placeholder="请输入邮箱" key='my-mail'>
+      </template>
+      <button @click="handleToggleClick">Change</button>
+  </div>
+  <script src="https://unpkg.com/vue@2.1.6/dist/vue.min.js"></script>
+  <script>
+      var app = new Vue({
+          el: "#app",
+          data:{
+              type: 'name'
+          },
+          methods:{
+              handleToggleClick: function () {
+                  this.type = this.type === "name" ? "mail" : "name";
+              }
+          }
+      })
+  </script>
+  </body>
+  </html>
+  ```
+
+  给`input`元素增加了key属性之后，就不会复用了。此时label仍然是被复用的，因为没有添加key属性。
+
+## v-show
+
