@@ -425,6 +425,7 @@
 ## 数组更新
 
 - 会改变原数组的方法
+
   - push()
   - pop()
   - shift()
@@ -432,8 +433,107 @@
   - splice()
   - sort()
   - reverse()
+
 - 不会改变原数组的方法
+
   - filter()
   - concat()
   - slice()
+
+- 代码示例
+
+  ```html
+  <div app="id">
+      <ul>
+          <template v-for="book in books">
+              <li>BookName：{{book.name}}</li>
+              <li>BookAuthor:{{book.author}}</li>
+          </template>
+      </ul>
+  </div>
+  <srcipt>
+  	var app = new Vue({
+      	el:"#app",
+      	data:{
+      		books:[
+      		{
+      			name:"《Vue.js实战》",
+      			author:"666"
+      	    },
+      {
+      			name:"《KKK》",
+      			author:"333"
+      	    },
+      		{
+      			name:"《MMM》",
+      			author:"999"
+      	    },
+  	    ]
+      }
+      });
+      app.books = app.books.filters(
+      	function(item){
+      		return item.name.match(Vue.js/);
+      	}
+      )
+  </srcipt>
+  ```
+
+- Vue检测到数组发生变化时，并不是直接重新渲染整个列表，而是最大化的复用DOM元素。替换的数组中，含有相同的元素项不会被重新渲染，因此可以大胆的用新数组来替换旧数组，不用担心性能问题。
+
+- 但是下面的数组变动情况Vue无法检测到
+
+  - 通过索引直接设置项
+    - 直接用app.books[3] = {...}是检测不到的
+    - 可以使用Vue.set(app.books, 3,{...})来实现
+    - 或者使用webpack组件，this.$set(app.books, 3, {...})
+  - 修改数组长度
+    - 可以使用splice(1);来解决
+
+- 如果不想改变原数组，可以通过一个数组的副本来做过滤或排序显示，可以使用计算属性来返回过滤或排序后的数组
+
+  ```html
+  <div app="id">
+      <ul>
+          <template v-for="book in filterBooks">
+              <li>BookName：{{book.name}}</li>
+              <li>BookAuthor:{{book.author}}</li>
+          </template>
+      </ul>
+  </div>
+  <srcipt>
+  	var app = new Vue({
+      	el:"#app",
+      	data:{
+      		books:[
+      		{
+      			name:"《Vue.js实战》",
+      			author:"666"
+      	    },
+      {
+      			name:"《KKK》",
+      			author:"333"
+      	    },
+      		{
+      			name:"《MMM》",
+      			author:"999"
+      	    },
+  	    ]
+      }
+      });
+      computed:{
+      	filterBooks:function(){
+      		return this.book.filter(function(book){
+      			return book.name.match(/Vue.js/);
+      		});
+      	}
+      }
+  </srcipt>
+  ```
+
+
+
+## 方法与事件
+
+
 
