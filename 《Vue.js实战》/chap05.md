@@ -535,5 +535,80 @@
 
 ## 方法与事件
 
+- 代码示例
+
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <title>Title</title>
+  </head>
+  <body>
+  <div id="app">
+      {{count}}
+      <button @click="count++">Click</button>
+      <button @click="addTen(10)">Add 10</button>
+  </div>
+  <script src="https://unpkg.com/vue@2.1.6/dist/vue.min.js"></script>
+  <script>
+      var app = new Vue({
+          el: "#app",
+          data:{
+              count:0
+          },
+          methods:{
+              addTen:function (num) {
+                  num = num || 1;
+                  this.count += num;
+              }
+          }
+      })
+  </script>
+  </body>
+  </html>
+  ```
+
+- @click调用的方法后面可以不跟括号()，此时，如果没有参数，默认会将原生事件对象event传入。如果不需要传入参数，则不用写括号
+
+- Vue提供了特殊变量$event，用于访问原生DOM事件
+
+  代码示例
+
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <title>Title</title>
+  </head>
+  <body>
+  
+  <div id="app">
+      <a href="http://www.kingdeguo.com" @click="handleClick('No Open',$event)">a link</a>
+  </div>
+  <script src="https://unpkg.com/vue@2.1.6/dist/vue.min.js"></script>
+  <script>
+      var app = new Vue({
+          el:"#app",
+          data:{
+  
+          },
+          methods:{
+              handleClick:function (message, event) {
+                  event.preventDefault();
+                  window.alert(message);
+              }
+          }
+      })
+  </script>
+  </body>
+  </html>
+  ```
+
+
+
+## 访问修饰符
+
 
 
