@@ -337,4 +337,88 @@
 
 - 除了数组之外，对象是属性也可以遍历
 
-  
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <title>Title</title>
+  </head>
+  <body>
+  <div id="app">
+      <span v-for="value in user">
+          {{value}}
+      </span>
+  </div>
+  <script src="https://unpkg.com/vue@2.1.6/dist/vue.min.js"></script>
+  <script>
+      var app = new Vue({
+          el: "#app",
+          data:{
+              user:{
+                  name: "kingdeguo",
+                  gender: "man",
+                  age: 18
+              }
+          }
+      })
+  </script>
+  </body>
+  </html>
+  ```
+
+  渲染后的结果是
+
+  ```html
+  <span>kingdeguo</span><span>man</span><span>26</span>
+  ```
+
+  遍历对象属性时，有两个可选参数，分别是键名和索引
+
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <title>Title</title>
+  </head>
+  <body>
+  <div id="app">
+      <span v-for="(value, key, index) in user">
+          {{index}}-{{key}}:{{value}}
+      </span>
+  </div>
+  <script src="https://unpkg.com/vue@2.1.6/dist/vue.min.js"></script>
+  <script>
+      var app = new Vue({
+          el: "#app",
+          data:{
+              user:{
+                  name: "kingdeguo",
+                  gender: "man",
+                  age: 18
+              }
+          }
+      })
+  </script>
+  </body>
+  </html>
+  ```
+
+- 还可以迭代整数
+
+  ```html
+  <div id="app">
+  	<span v-for="n in 10">
+  		{{n}}
+  	</span>
+  <div>
+  <script>
+      var app = new Vue({
+          el:"#app"
+      })
+  </script>
+  ```
+
+- 
+
