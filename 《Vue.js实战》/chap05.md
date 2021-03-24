@@ -91,5 +91,120 @@
   </html>
   ```
 
+- 可能在优化性能的时候需要用到该指令
+
 ## v-if, v-else-if, v-else
 
+- 代码示例
+
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <title>Title</title>
+  </head>
+  <body>
+  <div id="app">
+      <p v-if="status===1">show 1</p>
+      <p v-else-if="status===2">show 2</p>
+      <p v-else>show default</p>
+  </div>
+  <script src="https://unpkg.com/vue@2.1.6/dist/vue.min.js"></script>
+  <script>
+      var app = new Vue({
+          el:"#app",
+          data:{
+              status: 1
+          }
+      })
+  </script>
+  </body>
+  </html>
+  ```
+
+- 如果一次判断的是多个文本，在使用`template`
+
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <title>Title</title>
+  </head>
+  <body>
+  <div id="app">
+      <template v-if="status===1">
+          <p>p1</p>
+          <p>p2</p>
+          <p>p3</p>
+      </template>
+  </div>
+  <script src="https://unpkg.com/vue@2.1.6/dist/vue.min.js"></script>
+  <script>
+      var app = new Vue({
+          el:"#app",
+          data:{
+              status: 1
+          }
+      })
+  </script>
+  </body>
+  </html>
+  ```
+
+- Vue在渲染元素时，出于效率考虑，会尽可能复用已有的元素而非重新渲染
+
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <title>Title</title>
+  </head>
+  <body>
+  
+  <div id="app">
+      <template v-if="type==='name'">
+          <label>用户名：</label>
+          <input placeholder="输入姓名">
+      </template>
+      <template v-else>
+          <label>邮箱：</label>
+          <input placeholder="请输入邮箱">
+      </template>
+      <button @click="handleToggleClick">Change</button>
+  </div>
+  <script src="https://unpkg.com/vue@2.1.6/dist/vue.min.js"></script>
+  <script>
+      var app = new Vue({
+          el: "#app",
+          data:{
+              type: 'name'
+          },
+          methods:{
+              handleToggleClick: function () {
+                  this.type = this.type === "name" ? "mail" : "name";
+              }
+          }
+      })
+  </script>
+  </body>
+  </html>
+  ```
+
+  ![image-20210324223238091](https://raw.githubusercontent.com/KingdeGuo/myPictureBed/main/img_upload202103/24/223339-826966.png)
+
+  最开始渲染的是这样的界面
+
+  输入一段内容
+
+  ![image-20210324223334289](https://raw.githubusercontent.com/KingdeGuo/myPictureBed/main/img_upload202103/24/223335-159836.png)
+
+  然后点击切换
+
+  ![image-20210324223401243](https://raw.githubusercontent.com/KingdeGuo/myPictureBed/main/img_upload202103/24/223401-464212.png)
+
+  可以看到DOM虽然改变了，但是输入框中的内容并没有发生改变。这说明`<input>`标签中的内容被复用了。
+
+  
