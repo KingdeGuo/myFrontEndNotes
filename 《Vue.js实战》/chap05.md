@@ -259,3 +259,82 @@
 
 ## v-for
 
+- 代码示例
+
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <title>Title</title>
+  </head>
+  <body>
+  <div id="app">
+      <ul>
+          <li v-for="(book, index) in books">
+              {{index}}->{{book.name}}
+          </li>
+      </ul>
+  </div>
+  <script src="https://unpkg.com/vue@2.1.6/dist/vue.min.js"></script>
+  <script>
+      var app = new Vue({
+          el: "#app",
+          data:{
+              books:[
+                  {name:"Book1"},
+                  {name:"Book2"},
+                  {name:"Book3"},
+              ]
+          }
+      })
+  </script>
+  </body>
+  </html>
+  ```
+
+  ![image-20210324225919401](https://raw.githubusercontent.com/KingdeGuo/myPictureBed/main/img_upload202103/24/225922-934629.png)
+
+- 同样可以使用`template`
+
+  ```html
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+      <meta charset="UTF-8">
+      <title>Title</title>
+  </head>
+  <body>
+  <div id="app">
+      <ul>
+          <template v-for="book in books">
+              <li>书名：{{book.name}}</li>
+              <li>作者：{{book.author}}</li>
+          </template>
+      </ul>
+  </div>
+  <script src="https://unpkg.com/vue@2.1.6/dist/vue.min.js"></script>
+  <script>
+      var app = new Vue({
+          el: "#app",
+          data:{
+              books:[
+                  {name:"Book1",
+                      author:'111'},
+                  {name:"Book2",
+                      author:'222'},
+                  {name:"Book3",
+                      author:'333'},
+              ]
+          }
+      })
+  </script>
+  </body>
+  </html>
+  ```
+
+  ![image-20210324230317978](https://raw.githubusercontent.com/KingdeGuo/myPictureBed/main/img_upload202103/24/230322-956593.png)
+
+- 除了数组之外，对象是属性也可以遍历
+
+  
