@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <ul>
+        <template v-for="book in books">
+            <li>书名：{{book.name}}</li>
+            <li>作者：{{book.author}}</li>
+        </template>
+    </ul>
+</div>
+<script src="https://unpkg.com/vue@2.1.6/dist/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data:{
+            books:[
+                {name:"Book1",
+                    author:'111'},
+                {name:"Book2",
+                    author:'222'},
+                {name:"Book3",
+                    author:'333'},
+            ]
+        }
+    })
+</script>
+</body>
+</html>

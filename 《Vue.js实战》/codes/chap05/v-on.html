@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    {{count}}
+    <button @click="count++">Click</button>
+    <button @click="addTen(10)">Add 10</button>
+</div>
+<script src="https://unpkg.com/vue@2.1.6/dist/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el: "#app",
+        data:{
+            count:0
+        },
+        methods:{
+            addTen:function (num) {
+                num = num || 1;
+                this.count += num;
+            }
+        }
+    })
+</script>
+</body>
+</html>
