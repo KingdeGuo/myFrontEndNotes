@@ -621,20 +621,52 @@
   代码示例
 
   ```html
-  <!-- -->
-  <!-- -->
-  <!-- -->
-  <!-- -->
-  <!-- -->
-  <!-- -->
-  <!-- -->
-  <!-- -->
-  <!-- -->
-  <!-- -->
-  <!-- -->
+  <!-- 阻止单击事件冒泡 -->
+  <a @click.stop="handle"></a>
+  <!-- 提交事件不再重载页面 -->
+  <form @submit.prevent="handle"></form>
+  <!-- 修饰符可以串联 -->
+  <a @click.stop.prevent="handle"></a>
+  <!-- 只有修饰符 -->
+  <form @submit.prevent="handle"></form>
+  <!-- 添加事件侦听器所使用事件捕获模式 -->
+  <div @click.capture="handle">
+      ...
+  </div>
+  <!-- 只有事件在该元素本身，而不是子元素触发时触发回调 -->
+  <div @click.self="handle">
+      ...
+  </div>
+  <!-- 只触发一次，组件同样适用 -->
+  <div @click.once="handle">
+      ...
+  </div>
+  <!-- 只有在keyCode是13时调用vm.submit() -->
+  <input @keyup.13="submit">
   ```
 
-  
+  其他键
+
+  ```
+  // 自定义键
+  Vue.config.keyCodes.f1 = 112;
+  // Vue提供的一些键
+  .enter
+  .tab
+  .esc
+  .space
+  .up
+  .down
+  .left
+  .right
+  // 可以组合使用
+  .ctrl
+  .alt
+  .shift
+  .meta(windows下是窗口键，mac下是command键)
+  ```
+
+- 购物车代码实战
 
   
 
