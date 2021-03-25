@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+    <input type="checkbox" v-model="picked" value="html" id="html">
+    <label for="html">HTML</label>
+    <input type="checkbox" v-model="picked" value="js" id="js">
+    <label for="js">JS</label>
+    <input type="checkbox" v-model="picked" value="css" id="css">
+    <label for="css">CSS</label>
+    <p>
+        You Picked: {{picked}}
+    </p>
+</div>
+<script src="https://unpkg.com/vue@2.1.6/dist/vue.min.js"></script>
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            picked: ['js']
+        }
+    })
+</script>
+</body>
+</html>

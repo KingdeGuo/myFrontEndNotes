@@ -290,5 +290,95 @@
 
 ## 绑定值
 
+- 绑定一个动态数据
 
+  - 单选按钮
+
+  ```html
+  <div id="app">
+      <input type="radio" v-model="picked" :value="value">
+      <label>单选按钮</label>
+      <p>
+          {{picked}}
+      </p>
+      <p>
+          {{value}}
+      </p>
+  </div>
+  <script>
+  	var app = new Vue({
+          el:"#app",
+          data:{
+              picked:false,
+              value:123
+          }
+      })
+  </script>
+  ```
+
+  选中时,`app.picked === app.value`，都是123
+
+  - 复选框
+
+  ```html
+  <div id="app">
+      <input type="checkbox"
+             v-model="toggle"
+             :true-value="value1"
+             :false-value="value2">
+      <label>复选框</label>
+      <p>
+          {{toggle}}
+      </p>
+      <p>
+          {{value1}}
+      </p>
+      <p>
+          {{value2}}
+      </p>
+  </div>
+  <script>
+  	var app = new Vue({
+          el:"#app",
+          data:{
+              toggle:false,
+              value1:'a',
+              value2:'b'
+          }
+      })
+  </script>
+  ```
+
+  勾选时，`app.toggle === app.value1`，未勾选时，`app.toggle === app.value2`
+
+  - 选择列表
+
+  ```html
+  <div id="app">
+      <select v-model="selected">
+          <option :value="{number:123}">123</option>
+      </select>
+      {{selected.number}}
+  </div>
+  <script>
+  	var app = new Vue({
+          el:"#app",
+          data:{
+              selected:''
+          }
+      })
+  </script>
+  ```
+
+  当选中时，`app.selected`是一个Object，所以`app.selected.number === 123`
+
+
+
+## 修饰符
+
+- 用于控制数据同步的时机
+- `v-model`默认是在`input`事件中同步输入框的数据
+- `v-model.lazy`会转化为在`change`事件中同步
+- `v-model.number`可以将输入转化为Number类型
+- `v-model.trim`可以自动过滤输入首尾空格
 
