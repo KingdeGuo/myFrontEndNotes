@@ -66,20 +66,144 @@
 
     ```html
     <div id="app">
-        <my-component></my-component>
+        <my-componet>
+        </my-componet>
     </div>
+    
     <script>
-    	var Child = {
-            template:'<div>局域注册组件的内容</div>'
-        }
-        
+        var Child = {
+            template:"<div>局部注册</div>"
+        };
         var app = new Vue({
-            el:"#app",
+            el: "#app",
             components:{
-                'my-component':Child
+                'my-componet': Child
             }
         })
     </script>
     ```
 
+    Vue组件的模板在某些情况下会受到HTML的限制，比如`<table>`内规定只能是`<tr>`，`<td>`，`<th>`等表格元素，所以在`<table>`内直接使用组件是无效的。这种情况下，使用特殊的`is`属性来挂载组件。
+
+    常见的限制元素还有`<ul>`，`<ol>`，`<select>`。
+
+    ```html
+    <div id="app">
+    	<table>
+            <today is="my-componet"></today>
+        </table>
+    </div>
     
+    <script>
+        Vue.component('my-componet',{
+            template:"<div>something to show</div>"
+        });
+    
+        var app = new Vue({
+            el: "#app"
+        })
+    </script>
+    ```
+
+  - 除了template选项外，组件中还可以想Vue实例那样引用其他的选项，比如data，computed，methods等。但是在使用data时，和实例稍有区别，data必须是函数，然后将数据return出去
+
+    代码示例
+
+    ```html
+    <div id="app">
+    	<my-componet>
+        </my-componet>
+    </div>
+    	
+    <script>
+        Vue.component('my-componet',{
+            template:"<div>something to show</div>",
+            data:function(){
+                return {
+                    message:"组件内容"
+                }
+            }
+        });
+    
+        var app = new Vue({
+            el: "#app"
+        })
+    </script>
+    ```
+
+  - JavaScript对象是引用关系，如果return出的对象引用了外部的一个对象，那么这个对象就是共享的。任何一方的修改都会同步。
+
+    代码示例
+
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+    <div id="app">
+        <my-component></my-component>
+        <my-component></my-component>
+        <my-component></my-component>
+    </div>
+    <script src="https://unpkg.com/vue@2.1.6/dist/vue.min.js"></script>
+    <script>
+        var data = {
+            count: 0
+        };
+    
+        Vue.component('my-component',{
+            template:'<button @click="count++">{{count}}</button>',
+            data:function () {
+                return data;
+            }
+        });
+    
+        var app = new Vue({
+            el: "#app"
+        })
+    </script>
+    
+    </body>
+    </html>
+    ```
+
+    组件使用了三次，点击任意一个，三个的数字都会加1。这不是我们期望的结果，所以给组件返回一个新的data对象来独立。
+
+    ```html
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+    <div id="app">
+        <my-component></my-component>
+        <my-component></my-component>
+        <my-component></my-component>
+    </div>
+    <script src="https://unpkg.com/vue@2.1.6/dist/vue.min.js"></script>
+    <script>
+        Vue.component('my-component',{
+            template:'<button @click="count++">{{count}}</button>',
+            data:function () {
+                return {
+                    count: 0
+                }
+            }
+        });
+    
+        var app = new Vue({
+            el: "#app"
+        })
+    </script>
+    
+    </body>
+    </html>
+    ```
+
+    
+
