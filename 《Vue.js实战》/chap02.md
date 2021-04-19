@@ -90,7 +90,7 @@
   ```js
   var app = new Vue({
       el:'app',
-      date:{
+      data:{
           a:2
       },
       created:function(){
