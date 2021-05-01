@@ -2,7 +2,7 @@
 
 # HTML基本标记
 
-- 元信息标记meta
+- 元信息标记`meta`
 
   ```html
   <!DOCTYPE html>
@@ -45,4 +45,30 @@
   </html>
   ```
 
+- `body`标签
+
+  ```html
+  <body bgcolor="red">设置颜色</body>
+  <body background="img_url">设置背景图片</body>
+  <!-- 设置全局的文字颜色-->
+  <body text="#ff6347">
+      I am red.
+  </body>
+  <!-- 设置全局的超链接的颜色-->
+  <!--
+  	link设置访问之前的颜色  
+  	alink设置正在访问的颜色
+  	vlink设置访问之后的颜色
+  -->
+  <body link="#ff6347">
+      I am red.
+  </body>
+  <!-- 设置页面与浏览器边框上边距和左边距 -->
+  <body topmargin="100px" leftmargin="100px">
+      I am here
+  </body>
+  ```
+
 - 
+
+  
