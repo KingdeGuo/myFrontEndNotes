@@ -12,7 +12,7 @@
   </table>
   ```
 
-  ![image-20210502094932313](C:\Users\asus\AppData\Roaming\Typora\typora-user-images\image-20210502094932313.png)
+  ![image-20210502094932313](https://raw.githubusercontent.com/KingdeGuo/myPictureBed/main/img_upload202105/02/100404-387738.png)
 
   - 设置表格标题`caption`
 
@@ -28,7 +28,7 @@
     </table>
     ```
 
-    ![image-20210502095311531](https://raw.githubusercontent.com/KingdeGuo/myPictureBed/main/img_upload202105/02/095341-26110.png)
+    ![image-20210502095311531](https://raw.githubusercontent.com/KingdeGuo/myPictureBed/main/img_upload202105/02/100406-467077.png)
 
 - 表格的一些属性
 
@@ -50,10 +50,16 @@
     </table>
     ```
 
-    ![image-20210502100213541](https://raw.githubusercontent.com/KingdeGuo/myPictureBed/main/img_upload202105/02/100215-788857.png)
+    ![image-20210502100213541](https://raw.githubusercontent.com/KingdeGuo/myPictureBed/main/img_upload202105/02/100408-395677.png)
 
 - `valign`可以设置垂直对齐方式
 
   - 可取值有`top`, `middle`, `bottom`
 
+- 单元格合并设置
+
+  - `colspan`水平跨度
+  - `rowspan`垂直跨度
+
 - 
+
