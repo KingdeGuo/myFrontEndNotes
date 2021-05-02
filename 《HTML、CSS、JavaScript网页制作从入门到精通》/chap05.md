@@ -62,4 +62,37 @@
 
 - 定义列表标记`<dl>`
 
+  由两部分组成，定义条件`dt`和定义描述`dd`。
+
+  ```html
+  <dl>
+      <dt>定义条件</dt>
+      <dd>定义描述</dd>
+      ...
+  </dl>
+  ```
+
+  - 一个实例
+
+  ```html
+  <dl>
+      <dt>Name</dt>
+      <dd>Here gives a name</dd>
+      <dt>age</dt>
+      <dd>my age is 18</dd>
+  </dl>
+  ```
+
+  ![image-20210502094233856](https://raw.githubusercontent.com/KingdeGuo/myPictureBed/main/img_upload202105/02/094235-371944.png)
+
+- 菜单列表标记
+
+  ```html
+  <menu>
+      <li>add1</li>
+      <li>add2</li>
+      <li>add3</li>
+  </menu>
+  ```
+
   
