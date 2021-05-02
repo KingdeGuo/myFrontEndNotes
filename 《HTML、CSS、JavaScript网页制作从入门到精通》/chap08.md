@@ -64,6 +64,6 @@
 
 - 可以通过`embed`标签插入flash。
 
-- 可以通过`bgsound`标记背景音乐。
+- 可以通过`bgsound`标记背景音乐。或者使用`embed`，然后设置`hidden`
 
-- 
+  - 通过`loop`可以设置循环的次数
