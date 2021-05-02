@@ -61,5 +61,9 @@
   - `colspan`水平跨度
   - `rowspan`垂直跨度
 
-- 
+- 其他设置
+
+  - `bordercolordark`设置单元格暗边框的颜色
+  - `tbody`用于统一设计表主体部分的样式
+  - `tfoot`用于定义表尾样式
 
