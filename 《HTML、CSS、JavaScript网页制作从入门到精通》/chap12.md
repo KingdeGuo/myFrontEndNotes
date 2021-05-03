@@ -52,4 +52,12 @@
 
 - 外边距与内边距
 
+  - 盒子模型
+
+  ![image-20210503185111572](https://raw.githubusercontent.com/KingdeGuo/myPictureBed/main/img_upload202105/03/185113-103966.png)
+
+- 定位属性
+
+  使用`position: static | absolute | fixed | relative`
+
   
