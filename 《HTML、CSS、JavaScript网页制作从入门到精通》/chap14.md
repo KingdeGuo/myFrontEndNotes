@@ -30,4 +30,14 @@
 
   ![image-20210503191246619](https://raw.githubusercontent.com/KingdeGuo/myPictureBed/main/img_upload202105/03/191247-914690.png)
 
-- 
+- 浏览器内部对象
+
+  - `navigator`是浏览器对象
+  - `document`文档元素
+  - `windows`处于对象层次最顶层。
+  - `location`对象提供了与当前打开的URL一起工作的方法喝属性
+  - `history`提供了历史清单有关的信息。
+
+  
+
+  
